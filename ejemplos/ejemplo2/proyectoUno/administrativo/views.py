@@ -8,10 +8,10 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 # importar las clases de models.py
-from administrativo.models import *
+from .models import *
 
 # importar los formularios de forms.py
-from administrativo.forms import *
+from .forms import *
 
 # Create your views here.
 

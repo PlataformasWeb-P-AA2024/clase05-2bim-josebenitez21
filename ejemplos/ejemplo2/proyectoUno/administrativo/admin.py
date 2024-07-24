@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Importar las clases del modelo
-from administrativo.models import Estudiante, NumeroTelefonico
+from .models import Estudiante, NumeroTelefonico
 
 # Agregar la clase Estudiante para administrar desde
 # interfaz de administración

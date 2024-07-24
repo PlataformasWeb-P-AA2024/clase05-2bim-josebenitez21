@@ -1,15 +1,45 @@
 {% extends "master.html" %}
 
 {% block content %}
+    <div id="main-wrapper">
+        <div class="container">
+            <div class="row gtr-200">
+                <div class="col-8 col-12-medium">
+                    <div id="content">
+                        <!-- Content -->
+                        <article>
+                            <h2>Crear Número Telefónico</h2>
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                {{ formulario.as_p }}
+                                <p><input type='submit' value='Agregar'/></p>
+                            </form>
+                        </article>
+                    </div>
+                </div>
+                <div class="col-4 col-12-medium">
+                    <div id="sidebar">
+                        <!-- Sidebar -->
+                        <section>
+                            <h3>Condiciones</h3>
+                            <ul>
+                                <li>
+                                    El número de teléfono debe tener 10 dígitos.
+                                </li>
+                                <li>
+                                    El número de teléfono debe de comenzar por 0.
+                                </li>
+                                <li>
+                                    El tipo de teléfono debe de ser : "particular", "publico", "privado" o "ninguno".
+                                </li>
 
-<h2>Crear Número Telefónico</h3>
+                            </ul>
 
-<form action="" method="post">
+                        </section>
 
-  {% csrf_token %}
-
-  {{formulario.as_p}}
-
-  <p><input type='submit' value='Agregar'/></p>
-</form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -1,12 +1,39 @@
 {% extends "master.html" %}
 
 {% block content %}
-<h2>Crear Estudiante</h3>
+    <div id="main-wrapper">
+        <div class="container">
+            <div class="row gtr-200">
+                <div class="col-4 col-12-medium">
+                    <div id="sidebar">
+                        <!-- Sidebar -->
+                        <section>
+                            <h3>Condiciones</h3>
+                            <ul>
+                                <li>Se debe colocar dos nombres al ingresar un estudiante.</li>
+                                <li>Se debe colocar dos apellidos al ingresar un estudiante.</li>
+                                <li>La cedula debe contener 10 digitos de maner aobligatoria.</li>
+                                <li>El correo debe de terminar en @utpl.edu.ec </li>
+                            </ul>
 
-<form action="" method="post">
-  {% csrf_token %}
-  {{formulario.as_p}}
-  <p><input type='submit' value='Agregar'/></p>
-</form>
+                        </section>
 
+                    </div>
+                </div>
+                <div class="col-8 col-12-medium imp-medium">
+                    <div id="content">
+                        <!-- Content -->
+                        <article>
+                            <h2>Crear Estudiante</h2>
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                {{ formulario.as_p }}
+                                <p><input type='submit' value='Agregar'/></p>
+                            </form>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -2,8 +2,9 @@ from django.forms import ModelForm
 from django.utils.translation import gettext_lazy as _
 from django import forms
 
-from administrativo.models import Estudiante, \
-        NumeroTelefonico
+from .models import Estudiante, \
+    NumeroTelefonico
+
 
 class EstudianteForm(ModelForm):
     class Meta:
@@ -15,7 +16,6 @@ class EstudianteForm(ModelForm):
             'cedula': _('Ingrese cédula por favor'),
             'correo': _('Ingrese correo por favor'),
         }
-
 
     def clean_nombre(self):
         valor = self.cleaned_data['nombre']
@@ -56,6 +56,18 @@ class NumeroTelefonicoForm(ModelForm):
         model = NumeroTelefonico
         fields = ['telefono', 'tipo', 'estudiante']
 
+    def clean_telefono(self):
+        valor = self.cleaned_data['telefono']
+        if len(valor) != 10 or not valor.startswith('0'):
+            raise forms.ValidationError("El número de teléfono debe tener 10 dígitos y comenzar con 0")
+        return valor
+
+    def clean_tipo(self):
+        valor = self.cleaned_data['tipo']
+        if valor not in ['particular', 'publico', 'privado', 'ninguno']:
+            raise forms.ValidationError("El tipo de teléfono debe ser 'particular', 'publico', 'privado' o 'ninguno'")
+        return valor
+
 
 class NumeroTelefonicoEstudianteForm(ModelForm):
 
@@ -68,3 +80,15 @@ class NumeroTelefonicoEstudianteForm(ModelForm):
     class Meta:
         model = NumeroTelefonico
         fields = ['telefono', 'tipo', 'estudiante']
+
+    def clean_telefono(self):
+        valor = self.cleaned_data['telefono']
+        if len(valor) != 10 or not valor.startswith('0'):
+            raise forms.ValidationError("El número de teléfono debe tener 10 dígitos y comenzar con 0")
+        return valor
+
+    def clean_tipo(self):
+        valor = self.cleaned_data['tipo']
+        if valor not in ['particular', 'publico', 'privado', 'ninguno']:
+            raise forms.ValidationError("El tipo de teléfono debe ser 'particular', 'publico', 'privado' o 'ninguno'")
+        return valor
